@@ -6,6 +6,8 @@ const session = require("express-session");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const prisma = require("./lib/prisma");
 const passport = require("./config/passport");
+const multer  = require('multer')
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -27,6 +29,28 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/users", userRouter);
+
+app.get("/upload", function (req, res, next) {
+  res.render('uploadFileForm')
+})
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'tmp/my-uploads')
+  },
+  filename: function (req, file, cb) {
+    const extension = path.extname(file.originalname)
+    cb(null, file.fieldname + '-' + Date.now() + extension)
+  }
+})
+
+const upload = multer({ storage: storage })
+
+app.post('/upload', upload.single('file'), function (req, res, next) {
+  // req.file is the file
+  console.log(req.file)
+  // req.body will hold the text fields, if there were any
+})
 
 app.get("/", (req, res) => {
   res.render("index");
