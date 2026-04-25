@@ -24,3 +24,22 @@ model Session {
   data String
   expiresAt DateTime
 }
+
+model Folder {
+  id Int @id @default(autoincrement())
+  name String
+  createdAt DateTime @default(now())
+  // Optional: Link it to a User if you have authentication
+  // userId    Int
+  // user      User     @relation(fields: [userId], references: [id])
+  
+  // This allows a folder to "own" multiple files
+  files File[]   
+}
+
+model File {
+  id Int @id @default(autoincrement())
+  url String
+  folderId Int
+  folder Folder @relation(fields: [folderId], references: [id])
+}

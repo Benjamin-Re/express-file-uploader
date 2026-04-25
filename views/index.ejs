@@ -1,11 +1,28 @@
-
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 </head>
+
 <body>
-    Home
+    <h1>My Drive</h1>
+
+    <div class="folder-container">
+        <% if (folders.length> 0) { %>
+            <% folders.forEach(folder=> { %>
+                <div class="folder-card">
+                    <p>
+                        <%= folder.name %>
+                    </p>
+                    <a href="/folders/<%= folder.id %>">Open</a>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No folders yet. Create one above!</p>
+        <% } %>
+    </div>
 </body>
+
 </html>

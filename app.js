@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const userRouter = require("./routes/userRouter");
+const folderRouter = require("./routes/folderRouter");
 const path = require("node:path");
 const session = require("express-session");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
@@ -29,6 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/users", userRouter);
+app.use("/folders", folderRouter);
 
 app.get("/upload", function (req, res, next) {
   res.render('uploadFileForm')
@@ -52,8 +54,9 @@ app.post('/upload', upload.single('file'), function (req, res, next) {
   // req.body will hold the text fields, if there were any
 })
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  const folders = await prisma.folder.findMany();
+  res.render("index", { folders });
 });
 
 const PORT = process.env.PORT || 3000;
