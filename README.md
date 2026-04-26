@@ -10,6 +10,6 @@ TODO:
     - user can upload a file [x]
     - save the file in local filesystem [x]
 - user can create a folder [x]
-- user can CRUD folder
+- user can CRUD folder []
 - files live in folders
     

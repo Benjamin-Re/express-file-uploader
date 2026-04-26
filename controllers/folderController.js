@@ -12,5 +12,12 @@ async function addFolder(req, res, next) {
     res.redirect("/")
 }
 
-module.exports = { showAddFolderForm, addFolder }
+async function openFolder(req, res, next) {
+    const folderId = req.params.id
+    const folder = await prisma.folder.findUnique({ where: { id: Number(folderId) } })
+    console.log(folder)
+    res.render("folder", { folder: folder })
+}
+
+module.exports = { showAddFolderForm, addFolder, openFolder }
 

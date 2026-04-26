@@ -1,0 +1,19 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder</title>
+</head>
+<body>
+    <h1><%= locals.folder.name %></h1>
+    <p><%= locals.folder.createdAt %></p>
+    <ul>
+        <% if (locals.folder.files) { %>
+            <% for (const file in locals.folder.files) { %>
+                <%= file.url %>
+            <% } %>
+        <% } %>
+    </ul>
+</body>
+</html>
