@@ -5,7 +5,7 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="/upload" method="post" enctype="multipart/form-data">
+    <form action="/upload/<%= locals.folder.id %>" method="post" enctype="multipart/form-data">
       <input type="file" name="file" />
       <button type="submit">Submit</button>
     </form>

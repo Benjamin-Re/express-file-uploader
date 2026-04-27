@@ -8,6 +8,7 @@
 <body>
     <h1><%= locals.folder.name %></h1>
     <p><%= locals.folder.createdAt %></p>
+    <a href="/folders/upload/<%= locals.folder.id %>">Upload File</a>
     <ul>
         <% if (locals.folder.files) { %>
             <% for (const file in locals.folder.files) { %>
