@@ -24,5 +24,22 @@ async function deleteFolder(req, res, next) {
     res.redirect("/")
 }
 
-module.exports = { showAddFolderForm, addFolder, openFolder, deleteFolder }
+async function showUpdateFolderForm(req, res, next) {
+    const folderId = req.params.id
+    const folderToUpdate = await prisma.folder.findUnique({
+        where: { id: Number(folderId) }
+    })
+    res.render("updateFolderForm", { folder: folderToUpdate })
+}
+
+async function updateFolder(req, res, next) {
+    const folderId = req.params.id
+    await prisma.folder.update({ 
+        where: { id: Number(folderId) },
+        data: { name: req.body.folderName },
+    })
+    res.redirect("/")
+}
+
+module.exports = { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolderForm, updateFolder }
 
