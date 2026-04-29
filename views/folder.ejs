@@ -11,8 +11,8 @@
     <a href="/folders/upload/<%= locals.folder.id %>">Upload File</a>
     <ul>
         <% if (locals.folder.files) { %>
-            <% for (const file in locals.folder.files) { %>
-                <%= file.url %>
+            <% for (const file of locals.folder.files) { %>
+                <li><%= file.url %></li>
             <% } %>
         <% } %>
     </ul>
