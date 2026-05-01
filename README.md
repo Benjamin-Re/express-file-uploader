@@ -3,6 +3,7 @@ simplified google drive clone
 run `npm i`
 add db connection string DATABASE_URL in .env
 add SESSION_SECRET in .env
+probably initially and after every update to the DB schema you have to run `npx prisma migrate dev`(to synch db with schema) and `npx prisma generate`(to regenerate the local prisma client).
 
 TODO:
 - add login with prisma [x]
