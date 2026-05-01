@@ -1,4 +1,5 @@
 const prisma = require("../lib/prisma");
+const path = require("path")
 
 function showAddFolderForm(req, res) {
     res.render("addFolderForm")
@@ -34,23 +35,23 @@ async function showUpdateFolderForm(req, res, next) {
 
 async function updateFolder(req, res, next) {
     const folderId = req.params.id
-    await prisma.folder.update({ 
+    await prisma.folder.update({
         where: { id: Number(folderId) },
         data: { name: req.body.folderName },
     })
     res.redirect("/")
 }
 
-async function showUploadFileForm (req, res, next) {
+async function showUploadFileForm(req, res, next) {
     const folderId = req.params.id
-    const folder = await prisma.folder.findUnique({where: { id: Number(folderId) }})
+    const folder = await prisma.folder.findUnique({ where: { id: Number(folderId) } })
     res.render('uploadFileForm', { folder })
 }
 
-async function addFileToFolder (req, res, next) {
-    
+async function addFileToFolder(req, res, next) {
+
     const folderId = req.params.id
-    
+
     await prisma.file.create({
         data: {
             url: req.file.path,
@@ -63,13 +64,30 @@ async function addFileToFolder (req, res, next) {
     res.redirect(`/folders/${folderId}`)
 }
 
-async function showFileDetails (req, res, next) {
+async function showFileDetails(req, res, next) {
     const fileId = req.params.id
     const file = await prisma.file.findUnique({
-        where: { id: Number(fileId)}
+        where: { id: Number(fileId) }
     })
     res.render("file", { file })
 }
 
-module.exports = { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolderForm, updateFolder, showUploadFileForm, addFileToFolder, showFileDetails }
+async function downloadFile(req, res, next) {
+    const fileId = req.params.id
+    const file = await prisma.file.findUnique({
+        where: { id: Number(fileId) }
+    })
+    const absolutePath = path.join(__dirname, '..', file.url);
+    try {
+        res.download(absolutePath, (err) => {
+            if (err) {
+                res.status(404).send("File not found on disk");
+            }
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
+module.exports = { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolderForm, updateFolder, showUploadFileForm, addFileToFolder, showFileDetails, downloadFile }
 
