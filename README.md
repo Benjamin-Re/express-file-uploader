@@ -11,5 +11,6 @@ TODO:
     - save the file in local filesystem [x]
 - user can create a folder [x]
 - user can CRUD folder [x]
-- files live in folders
+- files live in folders [x]
+- view file details name, size, and upload time. There should be a download button []
     

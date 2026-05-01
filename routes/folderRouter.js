@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const folderRouter = Router();
-const { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolderForm, updateFolder, showUploadFileForm, addFileToFolder } = require("../controllers/folderController");
+const { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolderForm, updateFolder, showUploadFileForm, addFileToFolder, showFileDetails } = require("../controllers/folderController");
 const multer  = require('multer')
 const path = require('path')
 
@@ -21,6 +21,7 @@ folderRouter.get("/delete/:id", deleteFolder)
 folderRouter.get("/update/:id", showUpdateFolderForm)
 folderRouter.post("/update/:id", updateFolder)
 folderRouter.get("/upload/:id", showUploadFileForm)
+folderRouter.get("/file/:id", showFileDetails)
 folderRouter.post("/upload/:id", upload.single('file'), addFileToFolder)
 folderRouter.get("/", showAddFolderForm);
 folderRouter.post("/", addFolder);

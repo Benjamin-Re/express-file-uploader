@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +11,7 @@
     <ul>
         <% if (locals.folder.files) { %>
             <% for (const file of locals.folder.files) { %>
-                <li><%= file.url %></li>
+                <li><a href="/folders/file/<%= file.id %>"><%= file.url %></a></li>
             <% } %>
         <% } %>
     </ul>

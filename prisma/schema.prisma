@@ -42,4 +42,7 @@ model File {
   url String
   folderId Int
   folder Folder @relation(fields: [folderId], references: [id])
+  name String
+  size Int
+  timeUploaded DateTime @default(now())
 }

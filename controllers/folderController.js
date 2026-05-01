@@ -54,12 +54,22 @@ async function addFileToFolder (req, res, next) {
     await prisma.file.create({
         data: {
             url: req.file.path,
-            folderId: Number(folderId)
+            folderId: Number(folderId),
+            name: req.file.filename,
+            size: req.file.size,
         }
     })
 
     res.redirect(`/folders/${folderId}`)
 }
 
-module.exports = { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolderForm, updateFolder, showUploadFileForm, addFileToFolder }
+async function showFileDetails (req, res, next) {
+    const fileId = req.params.id
+    const file = await prisma.file.findUnique({
+        where: { id: Number(fileId)}
+    })
+    res.render("file", { file })
+}
+
+module.exports = { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolderForm, updateFolder, showUploadFileForm, addFileToFolder, showFileDetails }
 
