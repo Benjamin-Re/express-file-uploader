@@ -13,5 +13,5 @@ TODO:
 - user can create a folder [x]
 - user can CRUD folder [x]
 - files live in folders [x]
-- view file details name, size, and upload time. There should be a download button []
+- view file details name, size, and upload time. There should be a download button [x]
     
