@@ -1,5 +1,6 @@
 const prisma = require("../lib/prisma");
 const path = require("path")
+const { supabase } = require('../lib/supabase');
 
 function showAddFolderForm(req, res) {
     res.render("addFolderForm")
@@ -50,13 +51,21 @@ async function showUploadFileForm(req, res, next) {
 
 async function addFileToFolder(req, res, next) {
 
+    const { data, error } = await supabase.storage // data contains file path
+        .from('uploads') // this is the supabase bucket
+        .upload(`folder/${req.file.originalname}`, req.file.buffer); // buffer is the actual file data
+
     const folderId = req.params.id
+
+    const { data: { publicUrl } } = supabase.storage
+        .from('uploads')
+        .getPublicUrl(req.file.originalname);
 
     await prisma.file.create({
         data: {
-            url: req.file.path,
+            url: publicUrl,
             folderId: Number(folderId),
-            name: req.file.filename,
+            name: req.file.originalname,
             size: req.file.size,
         }
     })

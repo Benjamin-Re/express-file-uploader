@@ -4,6 +4,7 @@ const { showAddFolderForm, addFolder, openFolder, deleteFolder, showUpdateFolder
 const multer  = require('multer')
 const path = require('path')
 
+/*
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'tmp/my-uploads')
@@ -13,8 +14,9 @@ const storage = multer.diskStorage({
     cb(null, file.fieldname + '-' + Date.now() + extension)
   }
 })
+*/
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: multer.memoryStorage() })
 
 folderRouter.get("/:id", openFolder)
 folderRouter.get("/delete/:id", deleteFolder)
