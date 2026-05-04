@@ -54,12 +54,12 @@ async function addFileToFolder(req, res, next) {
     const { data, error } = await supabase.storage // data contains file path
         .from('uploads') // this is the supabase bucket
         .upload(`folder/${req.file.originalname}`, req.file.buffer); // buffer is the actual file data
-
+    console.log(error); 
     const folderId = req.params.id
-
+    
     const { data: { publicUrl } } = supabase.storage
         .from('uploads')
-        .getPublicUrl(req.file.originalname);
+        .getPublicUrl(`folder/${req.file.originalname}`);
 
     await prisma.file.create({
         data: {
