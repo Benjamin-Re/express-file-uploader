@@ -5,6 +5,7 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include('navbar') %>  
     <form action="/folders/upload/<%= locals.folder.id %>" method="post" enctype="multipart/form-data">
       <input type="file" name="file" />
       <button type="submit">Submit</button>

@@ -18,6 +18,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: multer.memoryStorage() })
 
+folderRouter.get("/new", showAddFolderForm);
+folderRouter.post("/new", addFolder);
 folderRouter.get("/:id", openFolder)
 folderRouter.get("/delete/:id", deleteFolder)
 folderRouter.get("/update/:id", showUpdateFolderForm)
@@ -26,8 +28,6 @@ folderRouter.get("/upload/:id", showUploadFileForm)
 folderRouter.get("/file/download/:id", downloadFile)
 folderRouter.get("/file/:id", showFileDetails)
 folderRouter.post("/upload/:id", upload.single('file'), addFileToFolder)
-folderRouter.get("/", showAddFolderForm);
-folderRouter.post("/", addFolder);
 
 
 module.exports = folderRouter;

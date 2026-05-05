@@ -14,5 +14,8 @@ TODO:
 - user can CRUD folder [x]
 - files live in folders [x]
 - view file details name, size, and upload time. There should be a download button [x]
-- use a cloud storage service to store uploaded files (Cloudinary or Supabase). Save file URL in db. []
+- use a cloud storage service to store uploaded files (Cloudinary or Supabase). Save file URL in db. [x]
+- add navbar [x]
+- protect routes so only logged in users can create folders and upload files. Also only folders and files of the logged in user should be visible to him []
+- add signup []
     

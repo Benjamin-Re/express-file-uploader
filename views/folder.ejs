@@ -5,6 +5,7 @@
     <title>Folder</title>
 </head>
 <body>
+    <%- include('navbar') %>  
     <h1><%= locals.folder.name %></h1>
     <p><%= locals.folder.createdAt %></p>
     <a href="/folders/upload/<%= locals.folder.id %>">Upload File</a>
