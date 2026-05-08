@@ -9,7 +9,7 @@ function showAddFolderForm(req, res) {
 async function addFolder(req, res, next) {
   console.log(req.body.folderName);
   await prisma.folder.create({
-    data: { name: req.body.folderName },
+    data: { name: req.body.folderName, userId: req.user.id },
   });
   res.redirect("/");
 }

@@ -28,14 +28,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 app.use("/users", userRouter);
 app.use("/folders", folderRouter);
 
 app.get("/", async (req, res) => {
-  const folders = await prisma.folder.findMany();
-  res.render("index", { folders });
+  if (!req.user) return res.render("index", { folders: [] });
+  const user = await prisma.user.findUnique({
+    where: { id: req.user.id },
+    include: { folders: true },
+  });
+  res.render("index", { folders: user.folders });
 });
 
 const PORT = process.env.PORT || 3000;
