@@ -22,4 +22,6 @@ TODO:
 - Only folders and files of the logged in user should be visible to him [x]
 - add signup [x]
 - login user automatically after signup []
+- css []
+- deploy []
     
