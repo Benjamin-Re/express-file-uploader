@@ -7,10 +7,16 @@ function showLoginForm(req, res) {
 
 async function addUser(req, res, next) {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  await prisma.user.create({
+  const newUser = await prisma.user.create({
     data: { name: req.body.name, password: hashedPassword },
   });
-  res.redirect("/");
+
+  req.logIn(newUser, (err) => {
+    if (err) {
+      return next(err);
+    }
+    return res.redirect("/");
+  });
 }
 
 module.exports = { showLoginForm, addUser };
