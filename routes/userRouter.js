@@ -23,4 +23,14 @@ userRouter.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
+userRouter.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if(err) {
+      return next(err)
+    } else {
+      res.redirect("/")
+    }
+  })
+})
+
 module.exports = userRouter;

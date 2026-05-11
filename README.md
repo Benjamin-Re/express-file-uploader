@@ -8,7 +8,7 @@ probably initially and after every update to the DB schema you have to run `npx 
 TODO:
 - add signup [x]
 - add login with prisma [x]
-- add logout []
+- add logout [x]
 - add file-upload-form 
     - user can upload a file [x]
     - save the file in local filesystem [x]
@@ -19,6 +19,7 @@ TODO:
 - use a cloud storage service to store uploaded files (Cloudinary or Supabase). Save file URL in db. [x]
 - add navbar [x]
 - protect routes so only logged in users can create folders and upload files[x]
-- Only folders and files of the logged in user should be visible to him []
-- add signup []
+- Only folders and files of the logged in user should be visible to him [x]
+- add signup [x]
+- login user automatically after signup []
     
