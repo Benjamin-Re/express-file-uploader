@@ -22,7 +22,7 @@ TODO:
 - Only folders and files of the logged in user should be visible to him [x]
 - add signup [x]
 - validate file upload [] 
-- login user automatically after signup []
+- login user automatically after signup [x]
 - css []
 - deploy []
     
