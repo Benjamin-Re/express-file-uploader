@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 
 <body>
@@ -14,9 +15,9 @@
         <% if (folders.length> 0) { %>
             <% folders.forEach(folder=> { %>
                 <div class="folder-card">
-                    <p>
+                    <h3>
                         <%= folder.name %>
-                    </p>
+                    </h3>
                     <a href="/folders/<%= folder.id %>">Open</a>
                     <a href="/folders/delete/<%= folder.id %>">Delete</a>
                     <a href="/folders/update/<%= folder.id %>">Update</a>

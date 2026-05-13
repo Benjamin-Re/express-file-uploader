@@ -3,18 +3,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Folder</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
     <%- include('navbar') %>  
     <h1><%= locals.folder.name %></h1>
-    <p><%= locals.folder.createdAt %></p>
-    <a href="/folders/upload/<%= locals.folder.id %>">Upload File</a>
-    <ul>
-        <% if (locals.folder.files) { %>
-            <% for (const file of locals.folder.files) { %>
-                <li><a href="/folders/file/<%= file.id %>"><%= file.url %></a></li>
+    <div class="folder-card">
+        <p class="timestamp"><%= locals.folder.createdAt %></p>
+        <a href="/folders/upload/<%= locals.folder.id %>">Upload File</a>
+        <ul>
+            <p>Uploaded files:</p>
+            <% if (locals.folder.files) { %>
+                <% for (const file of locals.folder.files) { %>
+                    <li><a href="/folders/file/<%= file.id %>"><%= file.url %></a></li>
+                <% } %>
             <% } %>
-        <% } %>
-    </ul>
+        </ul>
+    </div>
 </body>
 </html>

@@ -1,0 +1,96 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+
+  max-width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 2em;
+    box-shadow: rgba(0, 0, 0, 0.33) 0px 4px 8px 0px;
+    padding-top: 2em;
+}
+
+.folder-card, h1, .folder-container {
+    padding: 1em 1em 1em 1em;
+}
+
+.folder-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    gap: 10px;
+}
+
+.timestamp {
+    font-style: italic;
+    font-weight: 300;
+}
+
+body {
+    
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a:hover{
+    color: blue;
+}
+
+.error {
+  color: red;
+}

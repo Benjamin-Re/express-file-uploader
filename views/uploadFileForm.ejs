@@ -3,11 +3,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
     <%- include('navbar') %>  
     <% if (locals.error) { %>
-      <p style="color: red;"><%= error %></p>
+      <p class="error"><%= error %></p>
     <% } %>
     <form action="/folders/upload/<%= locals.folder.id %>" method="post" enctype="multipart/form-data">
       <input type="file" name="file" accept=".jpg,.jpeg,.png,.gif,.pdf" />
