@@ -21,8 +21,8 @@ TODO:
 - protect routes so only logged in users can create folders and upload files[x]
 - Only folders and files of the logged in user should be visible to him [x]
 - add signup [x]
-- validate file upload [] 
+- validate file upload [x] 
 - login user automatically after signup [x]
-- css []
+- css [x]
 - deploy []
     
