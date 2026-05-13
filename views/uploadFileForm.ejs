@@ -6,8 +6,11 @@
   </head>
   <body>
     <%- include('navbar') %>  
+    <% if (locals.error) { %>
+      <p style="color: red;"><%= error %></p>
+    <% } %>
     <form action="/folders/upload/<%= locals.folder.id %>" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" />
+      <input type="file" name="file" accept=".jpg,.jpeg,.png,.gif,.pdf" />
       <button type="submit">Submit</button>
     </form>
   </body>
